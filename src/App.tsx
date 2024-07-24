@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useTelegram } from "./hooks/useTelegram";
+import Header from "./components/Header/Header";
+import Card from "./components/Card/Card";
 
 function App() {
+  const { onToggleButton, tg } = useTelegram();
+
+  useEffect(() => {
+    tg.ready();
+  }, []);
+
+  const exampleState = [
+    {id: 1, name: 'Card1'},
+    {id: 1, name: 'Card1'},
+    {id: 1, name: 'Card1'},
+    {id: 1, name: 'Card1'},
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="">
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <div className="grid grid-cols-2 gap-2">
+          {exampleState.map((item, i) => <Card key={i}/>)}
+        </div>
+      </div>
     </div>
   );
 }
