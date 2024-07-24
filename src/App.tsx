@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 
 function App() {
-  const { onToggleButton, tg } = useTelegram();
+  const { tg } = useTelegram();
 
   useEffect(() => {
     tg.ready();
