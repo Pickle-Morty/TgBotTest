@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     tg.ready();
-  }, []);
+  });
 
   const exampleState = [
     {id: 1, name: 'Card1'},
